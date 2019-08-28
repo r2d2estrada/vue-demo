@@ -1,11 +1,13 @@
 <template>
     <div class="users">
         <h1>Users</h1>
-        <div class="card-inline">
-            <UserList :users="users" @onUserSelected="setSelectedUser($event)" />
-        </div>
-        <div class="card-inline">
-            <UserDetail :user="selectedUser" />
+        <div class="row">
+            <div class="card-inline left">
+                <UserList :users="users" @onUserSelected="setSelectedUser($event)" />
+            </div>
+            <div class="card-inline right">
+                <UserDetail :user="selectedUser" />
+            </div>
         </div>
     </div>
 </template>
@@ -21,7 +23,8 @@ export default {
             users: [
                 { name: 'Arturo', email: 'artestradaredz.85@gmail.com' },
                 { name: 'Marie', email: 'marie@gmail.com' },
-                { name: 'Juan', email: 'juan@gmail.com' }
+                { name: 'Juan', email: 'juan@gmail.com' },
+                { name: 'Sophie', email: 'sophie@mail.com' }
             ],
             selectedUser: null
         }
@@ -38,11 +41,20 @@ export default {
 }
 </script>
 
-<style scoped>
-    .card-inline {
-        display: inline-block;
-        width: 45%;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        margin: 0 1rem;
+<style scoped lang="scss">
+    .row {
+        display: flex;
+        .card-inline {
+            display: inline-block;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            margin: 0 1rem;
+
+            &.left {
+                width: 30%;
+            }
+            &.right {
+                width: 70%;
+            }
+        }
     }
 </style>
